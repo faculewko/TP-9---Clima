@@ -1,42 +1,304 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
+/* Variables de tema */
+:root {
+  --color-fondo-claro: #f5f5f5;
+  --color-texto-claro: #333333;
+  --color-primario-claro: #4a90e2;
+  --color-secundario-claro: #ffffff;
+  --color-borde-claro: #e0e0e0;
+  
+  --color-fondo-oscuro: #1a1a1a;
+  --color-texto-oscuro: #ffffff;
+  --color-primario-oscuro: #5a9fd4;
+  --color-secundario-oscuro: #2a2a2a;
+  --color-borde-oscuro: #404040;
+}
+
+/* Reset y estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: all 0.3s ease;
+}
+
+.app {
+  min-height: 100vh;
+  transition: background-color 0.3s ease;
+}
+
+/* Tema claro */
+.tema-claro {
+  background-color: var(--color-fondo-claro);
+  color: var(--color-texto-claro);
+}
+
+/* Tema oscuro */
+.tema-oscuro {
+  background-color: var(--color-fondo-oscuro);
+  color: var(--color-texto-oscuro);
+}
+
+/* Encabezado */
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 2rem;
+  background-color: var(--color-primario-claro);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tema-oscuro .encabezado {
+  background-color: var(--color-primario-oscuro);
+}
+
+.encabezado h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.controles {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Contenido principal */
+.contenido-principal {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Buscador */
+.buscador-clima {
+  margin-bottom: 2rem;
+}
+
+.formulario-busqueda {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.input-busqueda {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid var(--color-borde-claro);
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: var(--color-secundario-claro);
+  color: var(--color-texto-claro);
+}
+
+.tema-oscuro .input-busqueda {
+  background-color: var(--color-secundario-oscuro);
+  border-color: var(--color-borde-oscuro);
+  color: var(--color-texto-oscuro);
+}
+
+.boton-buscar,
+.boton-ubicacion {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.boton-buscar {
+  background-color: var(--color-primario-claro);
+  color: white;
+}
+
+.boton-buscar:hover {
+  opacity: 0.9;
+}
+
+.boton-ubicacion {
+  background-color: var(--color-secundario-claro);
+  color: var(--color-texto-claro);
+  border: 1px solid var(--color-borde-claro);
+}
+
+.tema-oscuro .boton-ubicacion {
+  background-color: var(--color-secundario-oscuro);
+  border-color: var(--color-borde-oscuro);
+}
+
+/* Selector de unidades */
+.selector-unidades {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.etiqueta-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.etiqueta-selector input[type="radio"] {
+  margin: 0;
+}
+
+/* Botón de tema */
+.boton-tema {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.boton-tema.claro {
+  background-color: var(--color-secundario-claro);
+  color: var(--color-texto-claro);
+  border: 1px solid var(--color-borde-claro);
+}
+
+.boton-tema.oscuro {
+  background-color: var(--color-secundario-oscuro);
+  color: var(--color-texto-oscuro);
+  border: 1px solid var(--color-borde-oscuro);
+}
+
+/* Tarjeta de clima */
+.tarjeta-clima {
+  background-color: var(--color-secundario-claro);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 2rem;
+}
+
+.tema-oscuro .tarjeta-clima {
+  background-color: var(--color-secundario-oscuro);
+}
+
+.info-principal {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.ciudad {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.icono-clima {
+  width: 100px;
+  height: 100px;
+}
+
+.temperatura {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0.5rem 0;
+}
+
+.descripcion {
+  font-size: 1.2rem;
+  text-transform: capitalize;
+}
+
+.detalles-clima {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.detalle {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--color-borde-claro);
+}
+
+.tema-oscuro .detalle {
+  border-bottom-color: var(--color-borde-oscuro);
+}
+
+.etiqueta {
+  font-weight: 600;
+}
+
+.valor {
+  font-weight: 400;
+}
+
+/* Estados de carga y mensajes */
+.estado-carga {
+  text-align: center;
+  padding: 2rem;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--color-borde-claro);
+  border-top: 4px solid var(--color-primario-claro);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.mensaje-error {
+  background-color: #fee;
+  color: #c33;
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1rem 0;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.mensaje-bienvenida {
+  text-align: center;
+  padding: 3rem 1rem;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.mensaje-bienvenida h2 {
+  margin-bottom: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .encabezado {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .controles {
+    flex-direction: column;
+    width: 100%;
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  
+  .formulario-busqueda {
+    flex-direction: column;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+  
+  .detalles-clima {
+    grid-template-columns: 1fr;
+  }
 }
