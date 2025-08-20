@@ -1,4 +1,4 @@
-const API_KEY = 'TU_API_KEY_AQUI'; // Reemplaza con tu API key de OpenWeatherMap
+const API_KEY = '464afa6a006ec7a9fc8fafbea316e58c'; // Reemplazada con tu API key de OpenWeatherMap
 const URL_BASE = 'https://api.openweathermap.org/data/2.5';
 
 export const obtenerClimaPorCiudad = async (ciudad) => {
