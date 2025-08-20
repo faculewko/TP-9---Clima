@@ -25,35 +25,6 @@ const BuscadorClima = () => {
     }
   };
 
-  const manejarUbicacion = () => {
-    if (!navigator.geolocation) {
-      setError('La geolocalización no está disponible en tu navegador');
-      return;
-    }
-
-    setCargando(true);
-    setError(null);
-
-    navigator.geolocation.getCurrentPosition(
-      async (posicion) => {
-        try {
-          const { latitude, longitude } = posicion.coords;
-          const datosClima = await obtenerClimaPorCoordenadas(latitude, longitude);
-          guardarClima(datosClima);
-        } catch (error) {
-          setError('Error al obtener el clima de tu ubicación');
-          guardarClima(null);
-        } finally {
-          setCargando(false);
-        }
-      },
-      (error) => {
-        setError('No se pudo obtener tu ubicación');
-        setCargando(false);
-      }
-    );
-  };
-
   return (
     <div className="buscador-clima">
       <form onSubmit={manejarBusqueda} className="formulario-busqueda">
@@ -71,9 +42,6 @@ const BuscadorClima = () => {
           Buscar
         </button>
       </form>
-      <button onClick={manejarUbicacion} className="boton-ubicacion">
-        Usar mi ubicación
-      </button>
     </div>
   );
 };
